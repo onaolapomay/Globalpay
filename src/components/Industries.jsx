@@ -6,7 +6,7 @@ const Industries = () => {
             <p className='text-center text-6xl font-black text-gray-700 tracking-wider font-[roboto]'>Industries Served</p>
             <p className='text-center text-4xl text-gray-700 mt-3 font-[roboto]'>Get state-of-the-art solutions for your business.</p>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-10 mt-10 px-10 md:px-20 lg:px-32'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mt-10 px-10 md:px-20 lg:px-32'>
                 
                 <div>
                     <img src='images/png/1.png' className='h-28' alt='' />
@@ -30,7 +30,7 @@ const Industries = () => {
                 </div>
                 <div>
                     <img src='images/png/6.png' className='h-28' alt='' />
-                    <p className='mt-6 text-xl font-[roboto]'>B2B</p>
+                    <p className='mt-6 px-12 text-xl font-[roboto]'>B2B</p>
                 </div>
             </div>
         </div>
