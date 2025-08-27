@@ -6,6 +6,8 @@ import Stax from './components/Stax.jsx'
 import Blogs from './components/Blogs.jsx'
 import GetStarted from './components/GetStarted.jsx'
 import Industries from './components/Industries.jsx'
+import Reviews from './components/Reviews.jsx'
+import ReviewsCard from './components/ReviewsCard.jsx'
 
 const Homepage = () => {
   return (
@@ -17,6 +19,8 @@ const Homepage = () => {
       <Blogs />
       <GetStarted />
       <Industries />
+      <Reviews />
+      <ReviewsCard />
     </>
   )
 }
