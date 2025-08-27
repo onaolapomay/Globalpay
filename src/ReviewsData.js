@@ -3,7 +3,7 @@ import { Star, Verified } from 'lucide-react';
 const ReviewsData = [
   {
     id: 1,
-    name: 'Mary Wald',
+    name: 'Adewale Victor',
     time: '7 hours ago',
     text: 'Aharon was very knowledgeable. He answered all my questions and was very polite and kind.',
     rating: 5,
@@ -11,7 +11,7 @@ const ReviewsData = [
   },
   {
     id: 2,
-    name: 'John Doe',
+    name: 'Mayowa Coker',
     time: '2 days ago',
     text: 'Great service! I\'m very satisfied with the support I received.',
     rating: 3,
@@ -19,7 +19,7 @@ const ReviewsData = [
   },
   {
     id: 3,
-    name: 'Alice Smith',
+    name: 'AbdulRahman',
     time: '1 week ago',
     text: 'I had a wonderful experience. The team was very helpful and attentive.',
     rating: 4,
@@ -27,7 +27,7 @@ const ReviewsData = [
   },
   {
     id: 4,
-    name: 'Bob Johnson',
+    name: 'Nneka',
     time: '2 weeks ago',
     text: 'The service was okay, but I expected more.',
     rating: 3,
@@ -35,7 +35,7 @@ const ReviewsData = [
   },
   {
     id: 5,
-    name: 'Charlie Brown',
+    name: 'Bisola Adeyemi',
     time: '3 weeks ago',
     text: 'Not bad, but there were some issues that need to be addressed.',
     rating: 3,
@@ -43,7 +43,7 @@ const ReviewsData = [
   },
   {
     id: 6,
-    name: 'David Wilson',
+    name: 'Aboubakar',
     time: '1 month ago',
     text: 'The product was defective and didn\'t work as expected.',
     rating: 1,
@@ -51,7 +51,7 @@ const ReviewsData = [
   },
   {
     id: 7,
-    name: 'Emily Davis',
+    name: 'Emily David',
     time: '2 months ago',
     text: 'I wasn\'t happy with the service. It didn\'t meet my expectations.',
     rating: 2,
@@ -59,7 +59,7 @@ const ReviewsData = [
   },
   {
     id: 8,
-    name: 'Frank Miller',
+    name: 'Femi',
     time: '3 months ago',
     text: 'The service was terrible. I will not be returning.',
     rating: 1,
@@ -67,7 +67,7 @@ const ReviewsData = [
   },
   {
     id: 9,
-    name: 'Grace Lee',
+    name: 'Ehi',
     time: '4 months ago',
     text: 'I had a fantastic experience! Highly recommend.',
     rating: 5,
@@ -75,7 +75,7 @@ const ReviewsData = [
   },
   {
     id: 10,
-    name: 'Henry Adams',
+    name: 'Dami',
     time: '5 months ago',
     text: 'The service was mediocre at best.',
     rating: 2,
@@ -83,7 +83,7 @@ const ReviewsData = [
   },
   {
     id: 11,
-    name: 'Isabella Martinez',
+    name: 'Isabella',
     time: '6 months ago',
     text: 'Absolutely loved the service! Will be back for sure.',
     rating: 5,
@@ -91,7 +91,7 @@ const ReviewsData = [
   },
   {
     id: 12,
-    name: 'James Wilson',
+    name: 'Jade',
     time: '7 months ago',
     text: 'The experience was just okay, nothing special.',
     rating: 3,

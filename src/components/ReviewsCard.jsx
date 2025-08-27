@@ -8,7 +8,7 @@ const ReviewsCard = ({ review }) => {
     <div className='bg-white p-4 rounded-xl shadow-md'>
       <div className='flex items-center justify-between mb-2'>
         <div>
-          <span className='font-semibold text-gray-800'>{review.name}</span>
+          <span className='font-semibold font-[roboto] text-gray-800'>{review.name}</span>
           <p className='text-sm text-gray-500'>{review.time}</p>
         </div>
         {review.verified && (
@@ -16,7 +16,7 @@ const ReviewsCard = ({ review }) => {
         )}
       </div>
 
-      <p className='text-gray-700 mb-3'>{review.text}</p>
+      <p className=' font-mono text-amber-600 mb-3'>{review.text}</p>
 
       <div className='flex'>
         {Array.from({ length: 5 }).map((_, i) => (
