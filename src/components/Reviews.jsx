@@ -9,7 +9,7 @@ const Reviews = () => {
       <div className='max-w-6xl mx-auto px-4'>
         <div className='flex flex-wrap justify-center  mb-8'>
           <div className='text-center space-x-4'>
-            <div className='text-center text-6xl font-semibold font-[roboto] text-gray-700 tracking-wider'>What Our Clients Are Saying</div>
+            <div className='text-center sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-[roboto] text-gray-700 tracking-wider'>What Our Clients Are Saying</div>
             <h2 className='text-2xl font-bold text-gray-800'>Excellent</h2>
             <div className='flex justify-center space-x-2'>
               {Array.from({ length: 5 }).map((_, i) => (
