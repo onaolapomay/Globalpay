@@ -15,20 +15,20 @@ const Navbar = () => {
         <p className='text-white text-xl font-[Edu_NSW_ACT_Cursive]'>GLBP</p>
 
         <ul className='hidden md:flex text-white text-lg font-sans space-x-8'>
-          <li><a href='' className='hover:text-amber-700'>Payment Solution</a></li>
-          <li><a href='' className='hover:text-amber-700'>Products</a></li>
-          <li><a href='' className='hover:text-amber-700'>Pricing</a></li>
-          <li><a href='' className='hover:text-amber-700'>Company</a></li>
-          <li><a href='' className='hover:text-amber-700'>Resources</a></li>
-          <li><a href='' className='hover:text-amber-700'>Contact Us</a></li>
-          <li><a href='' className='hover:text-amber-700'>Login</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Payment Solution</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Products</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Pricing</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Company</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Resources</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Contact Us</a></li>
+          <li><a href='#' className='hover:text-amber-700'>Login</a></li>
           <li className='bg-yellow-400 text-black font-medium px-6 py-2 rounded-xl hover:bg-yellow-200 cursor-pointer'>
-            <a href="">Contact Sales</a>
+            <a href="#">Contact Sales</a>
           </li>
         </ul>
 
         <button
-          className='md:hidden text-white'
+          className='md:hidden text-white hover:text-purple-950'
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
