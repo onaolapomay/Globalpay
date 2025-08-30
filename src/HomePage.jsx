@@ -8,6 +8,7 @@ import GetStarted from './components/GetStarted.jsx'
 import Industries from './components/Industries.jsx'
 import Reviews from './components/Reviews.jsx'
 import ReviewsCard from './components/ReviewsCard.jsx'
+import Footer from './components/Footer.jsx'
 
 const Homepage = () => {
   return (
@@ -21,6 +22,7 @@ const Homepage = () => {
       <Industries />
       <Reviews />
       <ReviewsCard />
+      <Footer />
     </>
   )
 }

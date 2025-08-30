@@ -9,9 +9,9 @@ const Reviews = () => {
       <div className='max-w-6xl mx-auto px-4'>
         <div className='flex flex-wrap justify-center  mb-8'>
           <div className='text-center space-x-4'>
-            <div className='text-center text-4xl lg:text-6xl font-semibold font-[roboto] text-gray-700 tracking-wider'>What Our Clients Are Saying</div>
-            <h2 className='text-2xl font-bold text-gray-800'>Excellent</h2>
-            <div className='flex justify-center space-x-2'>
+            <div className='text-center text-4xl lg:text-6xl font-extrabold font-[roboto] text-gray-700 tracking-wider'>What Our Clients Are Saying</div>
+            <div className='flex justify-center pt-4 space-x-2'>
+              <h2 className='text-2xl font-bold text-gray-800'>Excellent</h2>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className='w-6 h-6  bg-green-500 text-white fill-white' />
               ))}

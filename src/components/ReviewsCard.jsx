@@ -16,7 +16,7 @@ const ReviewsCard = ({ review }) => {
         )}
       </div>
 
-      <p className=' font-mono text-amber-600 mb-3'>{review.text}</p>
+      <p className='font-mono text-amber-600 mb-3'>{review.text}</p>
 
       <div className='flex'>
         {Array.from({ length: 5 }).map((_, i) => (
