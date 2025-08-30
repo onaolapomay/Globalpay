@@ -13,7 +13,7 @@ const Hero = () => {
             GlobalPay empowers software platforms, small businesses, and large businesses,
             through simplified, industry-leading integrated payment and recurring billing solutions.
           </p>
-          <button className='bg-yellow-400 text-black text-lg font-[roboto] cursor-pointer px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition'>
+          <button className='bg-yellow-400 text-black text-lg font-[roboto] cursor-pointer px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 focus:bg-yellow-500 active:bg-yellow-600 transition'>
             Get started
           </button>
         </div>
