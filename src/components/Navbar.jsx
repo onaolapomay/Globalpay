@@ -15,14 +15,14 @@ const Navbar = () => {
         <p className='text-white text-xl font-[Edu_NSW_ACT_Cursive]'>GLBP</p>
 
         <ul className='hidden md:flex text-white text-lg font-sans space-x-8'>
-          <li><a href='#' className='hover:text-amber-700'>Payment Solution</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Products</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Pricing</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Company</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Resources</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Contact Us</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Payment Solution</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Products</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Pricing</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Company</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Resources</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Contact Us</a></li>
           <li><a href='#' className='hover:text-amber-700'>Login</a></li>
-          <li className='bg-yellow-400 text-black font-medium px-6 py-2 rounded-xl hover:bg-yellow-200 cursor-pointer'>
+          <li className='bg-yellow-400 text-black font-medium px-6 py-2 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>
             <a href="#">Contact Sales</a>
           </li>
         </ul>
@@ -37,15 +37,15 @@ const Navbar = () => {
 
       {isOpen && (
         <ul className='md:hidden flex flex-col gap-4 bg-gray-900 text-white text-lg font-sans p-5'>
-          <li>Payment Solution</li>
-          <li>Products</li>
-          <li>Pricing</li>
-          <li>Company</li>
-          <li>Resources</li>
-          <li>Contact Us</li>
-          <li>Login</li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Payment Solution</a></li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Products</a></li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Pricing</a></li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Company</a></li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Resources</a></li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Contact Us</a></li>
+          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Login</a></li>
           <li className='bg-yellow-400 text-black font-medium px-6 py-2 rounded-xl hover:bg-yellow-200 cursor-pointer'>
-            Contact Sales
+            <a href="#">Contact Sales</a>
           </li>
         </ul>
       )}
