@@ -9,11 +9,13 @@ import Industries from './components/Industries.jsx'
 import Reviews from './components/Reviews.jsx'
 import ReviewsCard from './components/ReviewsCard.jsx'
 import Footer from './components/Footer.jsx'
+import LoginModal from './components/Auth/LoginModal.jsx'
 
 const Homepage = () => {
   return (
     <>
       <Navbar />
+      <LoginModal />
       <Hero />
       <Cards />
       <Stax />
