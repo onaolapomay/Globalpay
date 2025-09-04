@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import LoginModal from './Auth/LoginModal'
+import SignUpModal from './Auth/SignUpModal';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false)
-  ;
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
   return (
     <nav className='fixed top-0 left-0 w-full z-50'>
@@ -102,7 +103,9 @@ const Navbar = () => {
             </ul>
           </li>
           <li className='relative group'>
-            <button onClick={() => setIsLoginOpen(true)} className='bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>Login</button>
+            <button onClick={() => setIsLoginOpen(true)} className='bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>
+              Login
+            </button>
           </li>
         </ul>
 
@@ -122,15 +125,17 @@ const Navbar = () => {
           <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Company</a></li>
           <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Resources</a></li>
           <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Contact Us</a></li>
-          <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Login</a></li>
 
 
           <li>
-            <button onClick={() => setIsLoginOpen(true)} className='bg-yellow-400 text-black font-medium px-6 py-4 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>Login</button>
+            <button onClick={() => setIsLoginOpen(true)} className='bg-yellow-400 text-black font-medium px-6 py-4 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>
+              Login
+            </button>
           </li>
         </ul>
       )}
-      <LoginModal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />
+      <LoginModal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} setIsSignUpOpen={setIsSignUpOpen} />
+      <SignUpModal isSignUpOpen={isSignUpOpen} setIsSignUpOpen={setIsSignUpOpen} setIsLoginOpen={setIsLoginOpen} />
     </nav>
   );
 };

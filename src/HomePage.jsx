@@ -10,12 +10,14 @@ import Reviews from './components/Reviews.jsx'
 import ReviewsCard from './components/ReviewsCard.jsx'
 import Footer from './components/Footer.jsx'
 import LoginModal from './components/Auth/LoginModal.jsx'
+import SignUpModal from './components/Auth/SignUpModal.jsx'
 
 const Homepage = () => {
   return (
     <>
       <Navbar />
       <LoginModal />
+      <SignUpModal />
       <Hero />
       <Cards />
       <Stax />

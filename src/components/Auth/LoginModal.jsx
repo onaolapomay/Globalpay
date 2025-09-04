@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
 
-const LoginModal = ({isLoginOpen, setIsLoginOpen}) => {
+const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
     if (!isLoginOpen) return null
 
     return (
@@ -20,7 +20,7 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen}) => {
         <h2 className='text-3xl font-bold font-[roboto]'>Welcome back</h2>
         <p className='mt-2 text-gray-300 text-sm'>
           Start your website in seconds. Don’t have an account?{' '}
-          <span className='text-amber-400 hover:underline cursor-pointer'>
+          <span onClick={() => { setIsLoginOpen(false); setIsSignUpOpen(true); }} className='text-amber-400 hover:underline cursor-pointer'>
             Sign up
           </span>
         </p>
@@ -33,6 +33,7 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen}) => {
             type='email'
             placeholder='name@company.com'
             className='w-full rounded-lg bg-gray-700 px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            requi
           />
         </div>
 
