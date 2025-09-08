@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { X } from 'lucide-react'
+import { signUp } from '../../Firebase/authService'
 
 const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   if (!isSignUpOpen) return null
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Sign up submitted')
-    setIsSignUpOpen(false)
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!')
+      return
+    }
+    try {
+      await signUp(email, password)
+      alert('Account created successfully!')
+      setIsSignUpOpen(false)
+      setIsLoginOpen(true)
+    } catch (error) {
+      console.error('Error signing up:', error)
+      alert(error.message)
+    }
+
+
   }
 
   return (
@@ -22,7 +39,7 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
           </button>
 
           <div className='px-6 pt-8 text-center'>
-            <h2 className='text-3xl font-bold font-[roboto]'>Create an account</h2>
+            <h2 className='text-3xl font-bold font-[roboto]' >Create an account</h2>
             <p className='mt-2 text-gray-400'>
               Already have an account?{' '}
               <span
@@ -64,6 +81,8 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
                   Email
                   <input
                     type='email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder='john.doe@example.com'
                     className='mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400'
                     required
@@ -77,6 +96,23 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
                 </label>
                 <input
                   type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder='Your password'
+                  className='mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400'
+                  required
+                />
+              </div>
+
+              <div className='mb-4'>
+                <label className='block text-sm font-medium'>
+                  Re-enter Password
+                </label>
+                <input
+                  type='password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder='Your password'
                   className='mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400'
                   required
                 />
@@ -84,7 +120,7 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
 
               <button
                 type='submit'
-                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600'
+                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-500 focus:text-yellow-500 active:text-yellow-600'
               >
                 Sign Up
               </button>

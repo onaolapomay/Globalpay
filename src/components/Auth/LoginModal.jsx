@@ -1,8 +1,25 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
+import { login } from '../../Firebase/authService'
+
 
 const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
     if (!isLoginOpen) return null
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await login(email, password)
+            alert('Login successful!')
+            setIsLoginOpen(false)
+        } catch (error) {
+            console.error('Error logging in:', error)
+            alert(error.message)
+        }
+    }
 
     return (
         <>
@@ -31,9 +48,11 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
           <label className='block mb-2 text-sm font-medium'>Email</label>
           <input
             type='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder='name@company.com'
             className='w-full rounded-lg bg-gray-700 px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
-            requi
+            required
           />
         </div>
 
@@ -41,8 +60,11 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
           <label className='block mb-2 text-sm font-medium'>Password</label>
           <input
             type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder=''
             className='w-full rounded-lg bg-gray-700 px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            required
           />
         </div>
       </div>
@@ -57,11 +79,14 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
         </a>
       </div>
 
-      <div className='px-6 mt-6'>
-        <button className='w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 font-medium transition'>
+      <form className='px-6 mt-6' onSubmit={handleSubmit}>
+        <button
+          type='submit'
+          className='w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 font-medium transition'
+        >
           Sign in to your account
         </button>
-      </div>
+      </form>
 
       <div className='flex items-center my-6 px-6'>
         <div className='flex-grow border-t border-gray-700'></div>
