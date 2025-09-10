@@ -28,20 +28,74 @@ const Navbar = () => {
       <div className='bg-gray-900 flex items-center justify-between p-4 md:p-10'>
         <img src='/images/logo.png' alt='Logo' className='h-10' />
 
+        {/* Desktop menu */}
         <div className='hidden md:flex items-center space-x-8'>
           <ul className='flex items-center space-x-8 text-white text-lg'>
             <li className='relative group'>
-              <a href='#' className='hover:text-amber-700'>Payment Solution</a>
+              <a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>
+                Payment Solution
+              </a>
+              <ul className='absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-48'>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'>
+                  <a href='#' className='font-mono'>For businesses</a>
+                </li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'>
+                  <a href='#' className='font-mono'>For software platform</a>
+                </li>
+              </ul>
             </li>
+
             <li className='relative group'>
-              <a href='#' className='hover:text-amber-700'>Products</a>
+              <a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>
+                Products
+              </a>
+              <ul className='absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-48'>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Global Pay</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Global Connect</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Gblobal Bill</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Global CardX</a></li>
+              </ul>
             </li>
-            <li><a href='#' className='hover:text-amber-700'>Pricing</a></li>
-            <li><a href='#' className='hover:text-amber-700'>Company</a></li>
-            <li><a href='#' className='hover:text-amber-700'>Resources</a></li>
-            <li><a href='#' className='hover:text-amber-700'>Contact Us</a></li>
+
+            <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Pricing</a></li>
+
+            <li className='relative group'>
+              <a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>
+                Company
+              </a>
+              <ul className='absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-48'>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>About Us</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Leadership</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Career</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Press</a></li>
+              </ul>
+            </li>
+
+            <li className='relative group'>
+              <a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>
+                Resources
+              </a>
+              <ul className='absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-48'>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Insights</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>API Reference</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Documentation</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Support</a></li>
+              </ul>
+            </li>
+
+            <li className='relative group'>
+              <a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>
+                Contact Us
+              </a>
+              <ul className='absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-48'>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Talk to sales</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Talk to support</a></li>
+                <li className='px-6 py-2 hover:bg-gray-300 hover:text-amber-700'><a href='#' className='font-mono'>Partner with us</a></li>
+              </ul>
+            </li>
           </ul>
 
+          {/* Desktop auth buttons */}
           {user ? (
             <div className='flex items-center space-x-4'>
               <p className='text-white text-sm flex items-center gap-2'>
@@ -56,17 +110,16 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div>
-              <button
-                onClick={() => setIsLoginOpen(true)}
-                className='bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200'
-              >
-                Login
-              </button>
-            </div>
+            <button
+              onClick={() => setIsLoginOpen(true)}
+              className='bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200'
+            >
+              Login
+            </button>
           )}
         </div>
 
+        {/* Mobile right side (email + icon + hamburger) */}
         <div className='flex items-center gap-3 md:hidden'>
           {user ? (
             <div className='text-white text-sm flex items-center gap-2 truncate max-w-[140px]'>
@@ -92,6 +145,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile dropdown menu */}
       {isOpen && (
         <ul className='md:hidden flex flex-col gap-4 bg-gray-900 text-white text-lg font-sans p-5'>
           <li><a href='#' className='hover:text-amber-700'>Payment Solution</a></li>
@@ -113,17 +167,15 @@ const Navbar = () => {
                 Logout
               </button>
             ) : (
-              <div className='flex flex-col gap-2'>
-                <button
-                  onClick={() => {
-                    setIsSignUpOpen(true)
-                    setIsOpen(false)
-                  }}
-                  className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200'
-                >
-                  Sign up
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  setIsSignUpOpen(true)
+                  setIsOpen(false)
+                }}
+                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200'
+              >
+                Sign up
+              </button>
             )}
           </li>
         </ul>
