@@ -120,7 +120,7 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
 
               <button
                 type='submit'
-                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-500 focus:text-yellow-500 active:text-yellow-600'
+                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl cursor-pointer hover:bg-yellow-500 focus:text-yellow-500 active:text-yellow-600'
               >
                 Sign Up
               </button>

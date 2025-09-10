@@ -82,7 +82,7 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
       <form className='px-6 mt-6' onSubmit={handleSubmit}>
         <button
           type='submit'
-          className='w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 font-medium transition'
+          className='w-full py-3 rounded-lg cursor-pointer bg-blue-600 hover:bg-blue-700 font-medium transition focus:bg-blue-800 active:bg-blue-900'
         >
           Sign in to your account
         </button>

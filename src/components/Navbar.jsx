@@ -148,12 +148,12 @@ const Navbar = () => {
       {/* Mobile dropdown menu */}
       {isOpen && (
         <ul className='md:hidden flex flex-col gap-4 bg-gray-900 text-white text-lg font-sans p-5'>
-          <li><a href='#' className='hover:text-amber-700'>Payment Solution</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Products</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Pricing</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Company</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Resources</a></li>
-          <li><a href='#' className='hover:text-amber-700'>Contact Us</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Payment Solution</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Products</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Pricing</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Company</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Resources</a></li>
+          <li><a href='#' className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Contact Us</a></li>
 
           <li>
             {user ? (
