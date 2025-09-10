@@ -150,6 +150,26 @@ const Navbar = () => {
       </div>
 
 
+
+        
+          <div className='md:hidden'>
+            {user ? (
+          <>
+            <UserCheck className='fill-current text-amber-400' />
+            <p className='text-white text-sm'>Logged in as {user?.email}</p>
+            <button className='px-4 py-2 bg-red-600 text-white rounded-lg font-medium transition cursor-pointer' onClick={handleLogout}>Logout</button>
+          
+          </>
+        ) : (
+          <div className='md:hidden'>
+            <p className='text-white text-sm'>Not logged in</p>
+            <button onClick={() => setIsLoginOpen(true)} className='bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>
+              Login
+            </button>
+          </div>
+          
+        )}
+        </div>
       {/* smaller screen menu */}
       {isOpen && (
         <ul className='md:hidden flex flex-col gap-4 bg-gray-900 text-white text-lg font-sans p-5'>
@@ -161,23 +181,9 @@ const Navbar = () => {
           <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Contact Us</a></li>
 
 
-          {user ? (
-          <>
-          <div className='flex space-x-4 '>
-            <UserCheck className='fill-current text-amber-400' />
-            <p className='text-white text-sm'>Logged in as {user?.email}</p>
-            <button className='px-4 py-2 bg-red-600 text-white rounded-lg font-medium transition cursor-pointer' onClick={handleLogout}>Logout</button>
-          </div>
-          <p className='text-white text-sm'>Not logged in</p>
-            
-          </>
-        ) : (
+          <li>
           
-            <button onClick={() => setIsLoginOpen(true)} className='bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl hover:bg-yellow-200 focus:text-yellow-200 active:text-yellow-600 cursor-pointer'>
-              Login
-            </button>
-          
-        )}
+          </li>
         </ul>
       )}
       <LoginModal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} setIsSignUpOpen={setIsSignUpOpen} />
