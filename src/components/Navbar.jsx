@@ -161,8 +161,7 @@ const Navbar = () => {
           <li><a href="#" className='hover:text-amber-700 focus:text-amber-700 active:text-amber-900'>Contact Us</a></li>
 
 
-          <li>
-            {user ? (
+          {user ? (
           <>
           <div className='flex space-x-4 '>
             <UserCheck className='fill-current text-amber-400' />
@@ -179,7 +178,6 @@ const Navbar = () => {
             </button>
           
         )}
-          </li>
         </ul>
       )}
       <LoginModal isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} setIsSignUpOpen={setIsSignUpOpen} />
