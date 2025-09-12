@@ -1,13 +1,17 @@
 import React from 'react'
 import './index.css'
+import { Routes, Route } from 'react-router-dom'
+import Homepage from './pages/HomePage.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import SafeRoute from './components/SafeRoute.jsx'
 
-import Homepage from './HomePage.jsx'
 function App() {
 
   return (
-    <>
-      <Homepage />
-    </>
+    <Routes>
+      <Route path='/' element={<Homepage />} />
+      <Route path='/dashboard' element={<SafeRoute><Dashboard /></SafeRoute>} />
+    </Routes>
   )
 }
 

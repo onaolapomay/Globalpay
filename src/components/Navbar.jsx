@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Menu, X, UserCheck } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import LoginModal from './Auth/LoginModal'
 import SignUpModal from './Auth/SignUpModal'
-import { handleLogout } from '../../src/Firebase/authService'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../../src/Firebase/FirebaseConfig'
+import { AuthContext } from './AuthContext'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [isSignUpOpen, setIsSignUpOpen] = useState(false)
-  const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-    })
-    return () => unsubscribe()
-  }, [])
+  const { user, logout } = useContext(AuthContext)
+
+  const navigate = useNavigate()
+
+  
 
   return (
     <nav className='fixed top-0 left-0 w-full z-50'>
@@ -103,7 +100,10 @@ const Navbar = () => {
                 <UserCheck className='text-amber-400' />
               </p>
               <button
-                onClick={handleLogout}
+                onClick={() => {
+                  logout()
+                  navigate('/')
+                }}
                 className='px-4 py-2 bg-red-600 text-white rounded-lg font-medium transition'
               >
                 Logout
@@ -128,7 +128,9 @@ const Navbar = () => {
             </div>
           ) : (
             <button
-              onClick={() => setIsLoginOpen(true)}
+              onClick={() => {
+                setIsLoginOpen(true)
+              }}
               className='bg-yellow-400 text-black font-medium px-3 py-2 rounded-lg text-sm'
             >
               Login
@@ -159,8 +161,9 @@ const Navbar = () => {
             {user ? (
               <button
                 onClick={() => {
-                  handleLogout()
+                  logout()
                   setIsOpen(false)
+                  navigate('/')
                 }}
                 className='w-full bg-red-600 text-white font-medium px-6 py-3 rounded-xl hover:bg-red-700'
               >

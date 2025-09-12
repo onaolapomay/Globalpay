@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { login } from '../../Firebase/authService'
 
 
@@ -9,12 +10,16 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             await login(email, password)
             alert('Login successful!')
             setIsLoginOpen(false)
+
+            navigate('/dashboard')
         } catch (error) {
             console.error('Error logging in:', error)
             alert(error.message)
