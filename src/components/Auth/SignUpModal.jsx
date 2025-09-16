@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
-import { signUp } from '../../Firebase/authService'
+import { useAuth } from '../AuthContext'
+
 
 const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const { register } = useAuth()
+
   if (!isSignUpOpen) return null
 
   const handleSubmit = async (e) => {
@@ -15,7 +18,7 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
       return
     }
     try {
-      await signUp(email, password)
+      await register(email, password)
       alert('Account created successfully!')
       setIsSignUpOpen(false)
       setIsLoginOpen(true)

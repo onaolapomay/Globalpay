@@ -1,33 +1,18 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { auth } from './FirebaseConfig'
+import { auth } from '../Firebase/FirebaseConfig'
 
-// Sign Up function
-const signUp = async (email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-    return userCredential.user
-  } catch (error) {
-    throw error
-  }
+const signUpUser = async (email, password) => {
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+  return userCredential.user
 }
 
-// Login function
-const login = async (email, password) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password)
-    return userCredential.user
-  } catch (error) {
-    throw error
-  }
+const loginUser = async (email, password) => {
+  const userCredential = await signInWithEmailAndPassword(auth, email, password)
+  return userCredential.user
 }
 
-const handleLogout = async () => {
-  try{
-    await signOut(auth)
-    alert("User signed out successfully")
-  } catch (error) {
-    alert("Error signing out")
-  }
+const logoutUser = async () => {
+  await signOut(auth)
 }
 
-export { signUp, login, handleLogout }
+export { signUpUser, loginUser, logoutUser }

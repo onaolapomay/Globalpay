@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { login } from '../../Firebase/authService'
+import { useAuth } from '../AuthContext.jsx'
 
 
 const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
+  
     if (!isLoginOpen) return null
+
+
+    const { login } = useAuth()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

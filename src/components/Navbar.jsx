@@ -3,14 +3,13 @@ import { Menu, X, UserCheck } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import LoginModal from './Auth/LoginModal'
 import SignUpModal from './Auth/SignUpModal'
-import { AuthContext } from './AuthContext'
-
+import { useAuth } from './AuthContext' 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [isSignUpOpen, setIsSignUpOpen] = useState(false)
 
-  const { user, logout } = useContext(AuthContext)
+  const { user, logout } = useAuth()
 
   const navigate = useNavigate()
 
