@@ -2,7 +2,7 @@ import React from 'react';
 import { createContext, useContext, useState, useEffect} from 'react'
 import { auth } from '../Firebase/FirebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
-import { loginUser, signUpUser as registerUser, logoutUser, signUpUser } from '../Firebase/authService'
+import { loginUser, signUpUser, logoutUser } from '../Firebase/authService'
 
 export const AuthContext = createContext()
 
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, register, logout }}>
             {!loading && children}
         </AuthContext.Provider>
     )

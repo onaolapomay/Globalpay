@@ -1,8 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, CreditCard, User } from 'lucide-react'
+import { LayoutDashboard, CreditCard, User, LogOut } from 'lucide-react'
+import { useAuth } from './AuthContext'
 
 const SideBar = () => {
+    const { logout } = useAuth()
+
+    const handleLogout = async () => {
+        try {
+            await logout()
+        } catch (error){
+            console.error("Logout failed", error)
+        }
+    }
+
     const links = [
         { name: 'Overview', icon: <LayoutDashboard size={18} />, to: '/dashboard/overview' },
         { name: 'Transactions', icon: <CreditCard size={18} />, to: '/dashboard/transactions' },
@@ -25,6 +36,13 @@ const SideBar = () => {
                     </li>
                 ))}
             </ul>
+            <div className='absolute bottom-12'>
+                <button onClick={handleLogout}
+                className='flex items-center gap-2 font-[roboto]  text-lg px-3 py-2 rounded-md transition text-yellow-400  active:bg-yellow-500  hover:bg-yellow-400 hover:text-black'>
+                    <LogOut size={18} />
+                    Logout
+                </button>
+            </div>
         </div>
     )
 }
