@@ -26,7 +26,7 @@ const Overview = () => {
                     <Wallet size={32} className='text-white' />
                     <div>
                         <h2 className='text-lg font-semibold'>Wallet Balance</h2>
-                        <p className='text-gray-600 font-[roboto]'>$126,000.00</p>
+                        <p className='text-gray-600 font-[roboto]'>₦126,000.00</p>
                     </div>
                 </div>
 
