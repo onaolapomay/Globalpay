@@ -11,7 +11,10 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+            if (firebaseUser) {
+                await firebaseUser.reload()
+            }
             setUser(firebaseUser)
             setLoading(false)
         })
@@ -25,9 +28,10 @@ export const AuthProvider = ({ children }) => {
     }
 
 
-    const register = async (email, password) => {
-        const newUser = await signUpUser(email, password)
-        setUser(newUser)
+    const register = async (email, password, name) => {
+        const newUser = await signUpUser(email, password, name)
+        await newUser.reload()
+        setUser({...newUser})
         return newUser
     }
     const logout = async () => {

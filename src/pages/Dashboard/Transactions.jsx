@@ -1,14 +1,18 @@
 import React from 'react'
-import { ArrowUpCircle, ArrowDownCircle, Clock, XCircle } from 'lucide-react'
+import { ArrowUpCircle, ArrowDownCircle } from 'lucide-react'
 
 const Transactions = () => {
   const transactions = [
-    { id: 1, date: '2025-09-12', amount: 56000, description: 'Payment to Jumia Store', status: 'Completed', type: 'debit' },
-    { id: 2, date: '2025-09-10', amount: 27000, description: 'Refund from Moniepoint Services', status: 'Pending', type: 'credit' },
-    { id: 3, date: '2025-09-08', amount: 2100, description: 'Subscription to Spotify', status: 'Completed', type: 'debit' },
-    { id: 4, date: '2025-09-05', amount: 309000, description: 'Payment to Temu', status: 'Failed', type: 'debit' },
-    { id: 5, date: '2025-09-01', amount: 600000, description: 'Salary Credit', status: 'Completed', type: 'credit' },
+    { id: 1, date: '2025-09-12', amount: 56000, description: 'POS purchase on Jumia Store', status: 'Completed', type: 'debit' },
+    { id: 2, date: '2025-09-10', amount: 27000, description: 'Incoming Payment from Moniepoint Services', status: 'Pending', type: 'credit' },
+    { id: 3, date: '2025-09-08', amount: 2100, description: 'Ifitness Gym Monthly Subscription', status: 'Completed', type: 'debit' },
+    { id: 4, date: '2025-09-05', amount: 309000, description: 'Paystack Transfer to Temu', status: 'Failed', type: 'debit' },
+    { id: 5, date: '2025-09-01', amount: 600000, description: 'September Salary Credit- GOOGLE payroll Department', status: 'Completed', type: 'credit' },
     { id: 6, date: '2025-09-28', amount: 7500, description: 'Payment to CafeOne', status: 'Completed', type: 'debit' },
+    { id: 7, date: '2025-09-25', amount: 15000, description: 'WEB Buy on CDcare', status: 'Pending', type: 'debit' },
+    { id: 8, date: '2025-09-22', amount: 4500, description: 'Netflix Premium Subscription - POS Payment', status: 'Completed', type: 'debit' },
+    { id: 10, date: '2025-09-15', amount: 50000, description: 'Bola sent you', status: 'Completed', type: 'credit' },
+    { id: 11, date: '2025-09-14', amount: 200, description: 'Electronic Money Transfer Levy', status: 'Completed', type: 'debit' },
   ]
 
   return (
@@ -24,9 +28,9 @@ const Transactions = () => {
             {/* Icon + Description */}
             <div className='flex items-center gap-4'>
               {txn.type === 'credit' ? (
-                <ArrowDownCircle size={28} className='text-green-500' />
+                <ArrowUpCircle size={28} className='text-green-500' />
               ) : (
-                <ArrowUpCircle size={28} className='text-red-500' />
+                <ArrowDownCircle size={28} className='text-red-500' />
 
               )}
 

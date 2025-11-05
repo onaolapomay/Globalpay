@@ -22,7 +22,7 @@ const SideBar = () => {
 
 
     return (
-        <div className='bg-gray-800 text-white w-72 min-h-screen p-6 space-y-4'>
+        <div className='bg-gray-800 text-white w-72 h-full p-6 space-y-4'>
             <h2 className='text-2xl font-bold mb-8'>Dashboard</h2>
 
             <ul className='space-y-6'>
@@ -38,7 +38,7 @@ const SideBar = () => {
             </ul>
             <div className='absolute bottom-12'>
                 <button onClick={handleLogout}
-                className='flex items-center gap-2 font-[roboto]  text-lg px-3 py-2 rounded-md transition text-yellow-400  active:bg-yellow-500  focus:bg-amber-300 hover:bg-yellow-400 hover:text-black'>
+                className='flex fixed items-center gap-2 font-[roboto]  text-lg px-3 py-2 rounded-md transition text-yellow-400  active:bg-yellow-500  focus:bg-amber-300 hover:bg-yellow-400 hover:text-black'>
                     <LogOut size={18} />
                     Logout
                 </button>

@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import { useAuth } from '../AuthContext'
+// import { signUpUser } from '../Auth/../../Firebase/authService'
 
 
 const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -17,8 +20,11 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
       alert('Passwords do not match!')
       return
     }
+const name = `${firstname} ${lastname}`.trim()
+
     try {
-      await register(email, password)
+      const newUser = await register(email, password, name)
+      console.log('Registered user', newUser)
       alert('Account created successfully!')
       setIsSignUpOpen(false)
       setIsLoginOpen(true)
@@ -64,6 +70,8 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
                   First name
                   <input
                     type='text'
+                    value={firstname}
+                    onChange={(e) => setFirstname(e.target.value)}
                     placeholder='John'
                     className='mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400'
                     required
@@ -74,6 +82,8 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
                   Last name
                   <input
                     type='text'
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
                     placeholder='Doe'
                     className='mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400'
                     required
