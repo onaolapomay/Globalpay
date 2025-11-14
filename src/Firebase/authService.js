@@ -10,13 +10,10 @@ const signUpUser = async (email, password, name) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password)
   const user = userCredential.user
 
-  // Update display name
   await updateProfile(user, { displayName: name })
 
-  // Force refresh to get updated name
   await user.reload()
 
-  // Return updated current user
   return auth.currentUser
 }
 

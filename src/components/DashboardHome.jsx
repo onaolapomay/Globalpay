@@ -9,7 +9,7 @@ const DashboardHome = () => {
                         Welcome to Dashboard
                       </h1>
                       {user ? (
-                        <p className="mt-4 text-lg">Hello, {user.email}</p>
+                        <p className="mt-4 text-lg">Hello, {user.displayName}</p>
                       ) : (
                         <p className="mt-4 text-lg">You are not logged in.</p>
                       )}

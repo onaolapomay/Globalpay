@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { X } from 'lucide-react'
+import { X, EyeOff, Eye } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext.jsx'
 
@@ -13,6 +13,7 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate()
 
@@ -67,14 +68,21 @@ const LoginModal = ({isLoginOpen, setIsLoginOpen, setIsSignUpOpen}) => {
 
         <div>
           <label className='block mb-2 text-sm font-medium'>Password</label>
-          <input
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder=''
-            className='w-full rounded-lg bg-gray-700 px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
-            required
-          />
+          <div className='relative'>
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder=''
+              className='w-full rounded-lg bg-gray-700 px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+              required
+            />
+            <button type='button'
+                onClick={() => setShowPassword(!showPassword)}
+                className='absolute right-3 top-3 text-gray-800'>
+                {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
+              </button>
+          </div>
         </div>
       </div>
 
