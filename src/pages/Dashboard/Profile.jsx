@@ -22,7 +22,7 @@ const handleChangeName = async () => {
     const auth = getAuth()
     const currentUser = auth.currentUser
 
-    await updateProfile(currentUser, { displayName: newName})
+    await updateProfile(currentUser, { displayName: newName.toUpperCase()})
     alert('Name updated successfully!')
     setNewName('')
     window.location.reload()
@@ -67,9 +67,9 @@ const handleChangePassword = async () => {
                    <div className='flex justify-center items-center'>
                     <div className='flex justify-center items-center mb-4 w-20 h-20 rounded-full bg-gradient-to-r from-indigo-700 to-teal-600 text-white text-3xl font-medium'>
                         {user.displayName ? user.displayName.charAt(0).toUpperCase() 
-                        : user.email ? user.email.charAt(0).toUpperCase() : "U"}
+                        : user.email ? user.email.charAt(0).toUpperCase() : ""}
                     </div>
-                    <p className='mt-3 text-lg font-medium text-gray-800'> {user.displayName || user.email?.split('@')[0] || 'guest User'}</p>
+                    {/* <p className='mt-3 text-lg font-medium text-gray-800'> {user.displayName || user.email?.split('@')[0] || 'guest User'}</p> */}
                    </div>
 
 
@@ -78,7 +78,7 @@ const handleChangePassword = async () => {
                    <div className='space-y-3'>
                     <div className='flex items-center gap-3'>
                         <User className='text-indigo-600' size={30} />
-                        <p className='font-medium'>
+                        <p className='uppercase text-lg font-mono'>
                             Name:{''}
                             <span className='text-gray-700'>
                                 {user.displayName || 'Not Provided'}
@@ -89,7 +89,7 @@ const handleChangePassword = async () => {
 
                     <div className='flex items-center gap-3'>
                         <Mail className='text-indigo-600' size={30} />
-                        <p className='font-medium'>
+                        <p className='uppercase text-lg font-mono'>
                             Email:{''}
                             <span className='text-gray-700'>
                                 {user.email || 'Not Provided'}
