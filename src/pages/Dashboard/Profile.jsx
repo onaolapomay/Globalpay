@@ -81,7 +81,7 @@ const handleChangePassword = async () => {
                         <p className='uppercase text-lg font-mono'>
                             Name:{''}
                             <span className='text-gray-700'>
-                                {user.displayName || 'Not Provided'}
+                                {user.displayName.toUpperCase() || 'Not Provided'}
                             </span>
                         </p>
                     </div>
