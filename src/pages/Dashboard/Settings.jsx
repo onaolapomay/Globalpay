@@ -64,7 +64,7 @@ const Settings = () => {
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
                 placeholder='Enter a new name'
-                className='w-xl p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
+                className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                 <button onClick={handleChangeName}
                 disabled={loading}
                 className='mt-3 mx-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition'>
