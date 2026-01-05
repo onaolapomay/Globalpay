@@ -8,31 +8,11 @@ import  { updateProfile, updatePassword, getAuth } from 'firebase/auth'
 
 
 const Profile = () => {
-    const { user } = useAuth()
+const { user } = useAuth()
 
-const [newName, setNewName] = useState('')
-const [newPassword, setNewPassword] = useState('')
-const [loading, setLoading] = useState(false)
-const [showPassword, setShowPassword] = useState(false);
 
-const handleChangeName = async () => {
-    if (!newName.trim()) return alert('Please enter a valid name.')
-        try{
-    setLoading(true)
-    const auth = getAuth()
-    const currentUser = auth.currentUser
 
-    await updateProfile(currentUser, { displayName: newName.toUpperCase()})
-    alert('Name updated successfully!')
-    setNewName('')
-    window.location.reload()
-    } catch (error) {
-        console.error(error)
-        alert(error.message)
-    } finally {
-        setLoading(false)
-    }
-}
+
 
 
 const handleChangePassword = async () => {
@@ -113,7 +93,7 @@ const handleChangePassword = async () => {
                     <div className='mb-6'>
                         <label className='block text-gray-700 font-medium mb-2'>Change Display Name</label>
                         <input type="text"
-                        value={newName}
+                        
                         onChange={(e) => setNewName(e.target.value)}
                         placeholder='Enter a new name'
                         className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500' />
@@ -148,7 +128,7 @@ const handleChangePassword = async () => {
                                 {loading ? 'Updating...' : 'Update Password'}
                             </button>
                         
-                    </div>
+                        </div>
                     </div>
 
                    </div>

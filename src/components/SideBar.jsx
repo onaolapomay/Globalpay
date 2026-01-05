@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, CreditCard, User, LogOut } from 'lucide-react'
+import { LayoutDashboard, CreditCard, User, Settings, LogOut } from 'lucide-react'
 import { useAuth } from './AuthContext'
 
 const SideBar = () => {
@@ -18,6 +18,7 @@ const SideBar = () => {
         { name: 'Overview', icon: <LayoutDashboard size={18} />, to: '/dashboard/overview' },
         { name: 'Transactions', icon: <CreditCard size={18} />, to: '/dashboard/transactions' },
         { name: 'Profile', icon: <User size={18} />, to: '/dashboard/profile' },
+        { name: 'Settings', icon: <Settings size={18} />, to: '/dashboard/settings' },
     ]
 
 

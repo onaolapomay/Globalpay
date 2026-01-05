@@ -5,7 +5,7 @@ const Transactions = () => {
   const transactions = [
     { id: 1, date: '2025-09-12', amount: 56000, description: 'POS purchase on Jumia Store', status: 'Completed', type: 'debit' },
     { id: 2, date: '2025-09-10', amount: 27000, description: 'Incoming Payment from Moniepoint Services', status: 'Pending', type: 'credit' },
-    { id: 3, date: '2025-09-08', amount: 2100, description: 'Ifitness Gym Monthly Subscription', status: 'Completed', type: 'debit' },
+    { id: 3, date: '2025-09-08', amount: 45000, description: 'Ifitness Inc', status: 'Completed', type: 'debit' },
     { id: 4, date: '2025-09-05', amount: 309000, description: 'Paystack Transfer to Temu', status: 'Failed', type: 'debit' },
     { id: 5, date: '2025-09-01', amount: 600000, description: 'September Salary Credit- GOOGLE payroll Department', status: 'Completed', type: 'credit' },
     { id: 6, date: '2025-09-28', amount: 7500, description: 'Payment to CafeOne', status: 'Completed', type: 'debit' },

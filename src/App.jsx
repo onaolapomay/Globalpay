@@ -8,6 +8,7 @@ import DashboardLayout from './components/DashboardLayout.jsx'
 import Overview from './pages/Dashboard/Overview.jsx'
 import Transactions from './pages/Dashboard/Transactions.jsx'
 import Profile from './pages/Dashboard/Profile.jsx'
+import Settings from './pages/Dashboard/Settings.jsx'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='overview' element={<Overview />} />
         <Route path='transactions' element={<Transactions />} />
         <Route path='profile' element={<Profile />} />
+        <Route path='settings' element={<Settings />} />
       </Route>
     </Routes>
   )

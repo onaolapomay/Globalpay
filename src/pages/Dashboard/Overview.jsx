@@ -22,7 +22,7 @@ const Overview = () => {
 
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                <div className='bg-gradient-to-r from-blue-500 to-teal-500 p-6 rounded-xl shadow flex items-center gap-6 hover:scale-105 transition'>
+                <div className='bg-gradient-to-r from-blue-200 to-teal-500 p-6 rounded-xl shadow flex items-center gap-6 hover:scale-105 transition'>
                     <Wallet size={32} className='text-white' />
                     <div>
                         <h2 className='text-lg font-semibold'>Wallet Balance</h2>
