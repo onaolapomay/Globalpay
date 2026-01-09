@@ -82,29 +82,37 @@ const Settings = () => {
 
         
         <div className='mt-8  text-left'>
-            <div className=' bg-gray-300 px-4 py-6  rounded-xl'>
-                <div className='flex items-center mb-4 border-b cursor-pointer'>
-                    <ClockFading className='mr-2' />
-                    <button className=' text-3xl font-mono font-extralight'>Account Limit</button>
-                    <ChevronRight className='size-10' ></ChevronRight>
+            <div className=' bg-gray-300 px-4 py-5 space-y-2 rounded-2xl'>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                    <div className='flex items-center gap-3'>
+                        <ClockFading className='text-gray-700 group-hover:text-indigo-600 transition' />
+                        <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Account Limit</span>
+                    </div>  
+                    <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
 
-                <div className='flex items-center mb-4 border-b cursor-pointer'>
-                    <CreditCard className='mr-2' />
-                    <button className=' text-3xl font-mono font-extralight'>Bank Card/Account</button>
-                    <ChevronRight className='size-10' ></ChevronRight>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                    <div className='flex items-center gap-3'>
+                        <CreditCard className='text-gray-700 group-hover:text-indigo-600 transition' />
+                        <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Bank Card/Account</span>
+                    </div>  
+                    <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
 
-                <div className='flex items-center mb-4 border-b cursor-pointer'>
-                    <Headset className='mr-2' />
-                    <button className=' text-3xl font-mono font-extralight'>Customer Service Center</button>
-                    <ChevronRight className='size-10' ></ChevronRight>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                    <div className='flex items-center gap-3'>
+                        <Headset className='text-gray-700 group-hover:text-indigo-600 transition' />
+                        <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Customer Service Center</span>
+                    </div>  
+                    <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
 
-                <div className='flex items-center mb-2 border-b cursor-pointer'>
-                    <ShieldCheck className='mr-2' />
-                    <button className=' text-3xl font-mono font-extralight'>Security</button>
-                    <ChevronRight className='size-10' ></ChevronRight>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                    <div className='flex items-center gap-3'>
+                        <ShieldCheck className='text-gray-700 group-hover:text-indigo-600 transition' />
+                        <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Security</span>
+                    </div>
+                    <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
             </div>
             
