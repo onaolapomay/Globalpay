@@ -1,23 +1,31 @@
 import React, { useState } from 'react'
-import { getAuth, updateProfile, updatePassword } from 'firebase/auth'
+import { updateProfile } from 'firebase/auth'
+import { getAuth } from 'firebase/auth'
 import { Eye, EyeOff } from 'lucide-react'
+import { useAuth } from '../../components/AuthContext'
+import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth'
+
 
 const Settings = () => {
+    const { user } = useAuth()
+    const auth = getAuth()
+    const firebaseUser = auth.currentUser
+    
 
     const [newName, setNewName] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false);
+    const [currentPassword, setCurrentPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
 
     const handleChangeName = async () => {
         if (!newName.trim()) return alert('Please enter a valid name.')
             try{
         setLoading(true)
-        const auth = getAuth()
-        const currentUser = auth.currentUser
-    
-        await updateProfile(currentUser, { displayName: newName.toUpperCase()})
+
+        await updateProfile(firebaseUser, { displayName: newName.toUpperCase()})
         alert('Name updated successfully!')
         setNewName('')
         window.location.reload()
@@ -32,32 +40,53 @@ const Settings = () => {
 
     const handleChangePassword = async () => {
     if (newPassword.length < 6) {
-    alert('password must be at least 6 characters long.')
-    return
+        alert('Password must be at least 6 characters long')
+        return
     }
+    if (newPassword !== confirmPassword) {
+        alert('Passwords do not match')
+        return
+    }
+
     try {
         setLoading(true)
-        const auth = getAuth()
-        const currentUser = auth.currentUser
-        await updatePassword(currentUser, newPassword)
+
+        const credential = EmailAuthProvider.credential(
+            firebaseUser.email, currentPassword
+        )
+
+        await reauthenticateWithCredential(firebaseUser, credential)
+
+        await updatePassword(firebaseUser, newPassword)
+
         alert('Password updated successfully!')
         setNewPassword('')
+        setConfirmPassword('')
+        setCurrentPassword('')
     } catch (error) {
         console.error(error)
-        alert(error.message)
+        
+        if (error.code === 'auth/wrong-password') {
+            alert('Current password is incorrect')
+        } else if (error.code === 'auth/requires-recent-login') {
+            alert('Please log in again and try')
+        } else {
+            alert(error.message)
+        }
     } finally {
         setLoading(false)
     }
-
-    
 }
 
     return (
+
+        
         <div className='mt-8 border-t pt-6 text-left'>
             <h2 className='text-xl font-semibold mt-4 mb-2'>
                 Account Settings
             </h2>
-
+            {user ? (
+                <>
             <div className='mb-6'>
                 <label className='block text-gray-700 font-medium mb-2'>Change Display Name</label>
                 <input type="text" 
@@ -72,19 +101,55 @@ const Settings = () => {
                 </button>
             </div>
 
+            <div className='mt-4'>
+                    <label className='block text-gray-700 font-medium mb-2'>
+                        Current Password
+                    </label>
+                    <div className='relative'>
+                        <input type={showPassword ? "text" : "password"}
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        placeholder='Enter current password'
+                        className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
+                        <button type='button'
+                            onClick={() => setShowPassword(!showPassword)}
+                            className='absolute right-3 top-2.5 text-gray-800'>
+                        {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
+                    </button>
+                    </div>
+            </div>
+
             <div>
-                <label className='block text-gray-700 font-medium mb-2'>change Password</label>
+                <label className='block text-gray-700 font-medium mb-2'>Change Password</label>
                 <div className='relative'>
                     <input type={showPassword ? "text" : "password"}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder='Enter new password'
-                    className='w-full p-2 border rounded-lg focus:outline-none focus-ring-2 focus:ring-indigo-500'/>
+                    className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                     <button type='button'
                     onClick={() => setShowPassword(!showPassword)}
                     className='absolute right-3 top-2.5 text-gray-800'>
                         {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
                     </button>
+                </div>
+
+                <div className='mt-4'>
+                    <label className='block text-gray-700 font-medium mb-2'>
+                        Confirm Password
+                    </label>
+                    <div className='relative'>
+                        <input type={showPassword ? "text" : "password"}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder='Confirm new password'
+                        className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
+                        <button type='button'
+                            onClick={() => setShowPassword(!showPassword)}
+                            className='absolute right-3 top-2.5 text-gray-800'>
+                        {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
+                    </button>
+                    </div>
                 </div>
 
                 <button onClick={handleChangePassword}
@@ -94,6 +159,10 @@ const Settings = () => {
                     {loading ? 'Updating...' : 'Update Password'}
                 </button>
             </div>
+            </>
+            ) : (
+                <p className='text-lg text-rose-950'>Loading user information...</p>
+            )}
 
         </div>
     )

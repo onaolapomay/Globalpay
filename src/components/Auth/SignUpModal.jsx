@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import { useAuth } from '../AuthContext'
-// import { signUpUser } from '../Auth/../../Firebase/authService'
 
 
 const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
