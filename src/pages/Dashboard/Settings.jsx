@@ -119,7 +119,7 @@ const Settings = () => {
                     </div>
             </div>
 
-            <div>
+            <div className='mt-4'>
                 <label className='block text-gray-700 font-medium mb-2'>Change Password</label>
                 <div className='relative'>
                     <input type={showPassword ? "text" : "password"}
