@@ -18,7 +18,20 @@ const Settings = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [currentPassword, setCurrentPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [passwordStrength, setPasswordStrength] = useState(0)
 
+    const CheckPasswordStrength = (password) => {
+        let strength = 0
+
+        if (password.length >= 8) strength++
+        if (/[A-Z]/.test(password)) strength++
+        if (/[a-z]/.test(password)) strength++
+        if (/[0-9]/.test(password)) strength++
+        if (/[^A-Za-z0-9]/.test(password)) strength++
+
+
+       return strength
+    }
 
     const handleChangeName = async () => {
         if (!newName.trim()) return alert('Please enter a valid name.')
@@ -83,7 +96,7 @@ const Settings = () => {
         
         <div className='mt-8  text-left'>
             <div className=' bg-gray-300 px-4 py-5 space-y-2 rounded-2xl'>
-                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-pointer hover:bg-white hover:shadow-sm transition-all duration-200'>
                     <div className='flex items-center gap-3'>
                         <ClockFading className='text-gray-700 group-hover:text-indigo-600 transition' />
                         <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Account Limit</span>
@@ -91,7 +104,7 @@ const Settings = () => {
                     <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
 
-                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-pointer hover:bg-white hover:shadow-sm transition-all duration-200'>
                     <div className='flex items-center gap-3'>
                         <CreditCard className='text-gray-700 group-hover:text-indigo-600 transition' />
                         <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Bank Card/Account</span>
@@ -99,7 +112,7 @@ const Settings = () => {
                     <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
 
-                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-pointer hover:bg-white hover:shadow-sm transition-all duration-200'>
                     <div className='flex items-center gap-3'>
                         <Headset className='text-gray-700 group-hover:text-indigo-600 transition' />
                         <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Customer Service Center</span>
@@ -107,7 +120,7 @@ const Settings = () => {
                     <ChevronRight className='size-6 text-gray-400 group-hover:text-indigo-600 transition' ></ChevronRight>
                 </div>
 
-                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-painter hover:bg-white hover:shadow-sm transition-all duration-200'>
+                <div className='group flex items-center justify-center px-3 py-4 rounded-xl cursor-pointer hover:bg-white hover:shadow-sm transition-all duration-200'>
                     <div className='flex items-center gap-3'>
                         <ShieldCheck className='text-gray-700 group-hover:text-indigo-600 transition' />
                         <span className=' text-lg md:text-xl font-mono font-light text-gray-800'>Security</span>
@@ -158,7 +171,11 @@ const Settings = () => {
                 <div className='relative'>
                     <input type={showPassword ? "text" : "password"}
                     value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
+                    onChange={(e) =>{
+                        const value = e.target.value
+                        setNewPassword(value)
+                        setPasswordStrength(CheckPasswordStrength(value))
+                    }}
                     placeholder='Enter new password'
                     className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                     <button type='button'
@@ -166,6 +183,24 @@ const Settings = () => {
                     className='absolute right-3 top-2.5 text-gray-800'>
                         {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
                     </button>
+                </div>
+
+                <div className='mt-2'>
+                    <div className='flex gap-1'>
+                        <div className={`h-1 flex-1 rounded ${passwordStrength >= 1 ? 'bg-red-700' : 'bg-gray-300'}`}></div>
+                        <div className={`h-1 flex-1 rounded ${passwordStrength >=2 ? 'bg-yellow-400' : 'bg-gray-400'}`}></div>
+                        <div className={`h-1 flex-1 rounded ${passwordStrength >=3 ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                        <div className={`h-1 flex-1 rounded ${passwordStrength >=4 ? 'bg-green-700' : 'bg-gray-300'}`}></div>
+                    </div>
+
+                    <p className='text-m font-bold font-mono  mt-2 text-gray-600'>
+                        {passwordStrength === 0 && 'tpo weak'}
+                        {passwordStrength === 1 && 'Weak'}
+                        {passwordStrength === 2 && 'fair'}
+                        {passwordStrength === 3 && 'better'}
+                        {passwordStrength >= 4 && 'yes! Strong'}
+
+                    </p>
                 </div>
 
                 <div className='mt-4'>
@@ -188,10 +223,13 @@ const Settings = () => {
 
                 <button onClick={handleChangePassword}
                 type='button'
-                disabled={loading}
+                disabled={loading || passwordStrength < 3}
                 className='mt-3 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 disabled:opacity-50 transistion'>
                     {loading ? 'Updating...' : 'Update Password'}
                 </button>
+                {passwordStrength < 3 && newPassword && (
+                    <p className='text-sm text-red-600 mt-1'>Password strength must be at least <b>3 strength better</b></p>
+                )}
             </div>
             </>
             ) : (
