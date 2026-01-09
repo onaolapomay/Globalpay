@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { updateProfile } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, ChevronRight, ClockFading, CreditCard, Headset, ShieldCheck } from 'lucide-react'
 import { useAuth } from '../../components/AuthContext'
 import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth'
 
@@ -81,7 +81,33 @@ const Settings = () => {
     return (
 
         
-        <div className='mt-8 border-t pt-6 text-left'>
+        <div className='mt-8  text-left'>
+            <div className=' bg-gray-300 px-4 py-6  rounded-xl'>
+                <div className='flex items-center mb-4 border-b cursor-pointer'>
+                    <ClockFading className='mr-2' />
+                    <button className=' text-3xl font-mono font-extralight'>Account Limit</button>
+                    <ChevronRight className='size-10' ></ChevronRight>
+                </div>
+
+                <div className='flex items-center mb-4 border-b cursor-pointer'>
+                    <CreditCard className='mr-2' />
+                    <button className=' text-3xl font-mono font-extralight'>Bank Card/Account</button>
+                    <ChevronRight className='size-10' ></ChevronRight>
+                </div>
+
+                <div className='flex items-center mb-4 border-b cursor-pointer'>
+                    <Headset className='mr-2' />
+                    <button className=' text-3xl font-mono font-extralight'>Customer Service Center</button>
+                    <ChevronRight className='size-10' ></ChevronRight>
+                </div>
+
+                <div className='flex items-center mb-2 border-b cursor-pointer'>
+                    <ShieldCheck className='mr-2' />
+                    <button className=' text-3xl font-mono font-extralight'>Security</button>
+                    <ChevronRight className='size-10' ></ChevronRight>
+                </div>
+            </div>
+            
             <h2 className='text-xl font-semibold mt-4 mb-2'>
                 Account Settings
             </h2>
