@@ -1,9 +1,15 @@
 import React from 'react'
 import { useAuth } from '../../components/AuthContext'
+// import NavLink from 'react-router-dom'
 import { Wallet, CreditCard, Settings, History, Hourglass } from 'lucide-react'
 
 const Overview = () => {
     const { user } = useAuth()
+
+
+    const links =[
+        { name: 'Transactions', icon: <CreditCard size={18} />, to: '/dashboard/transactions' }
+    ]
 
     return (
         <div className=''>
@@ -35,8 +41,10 @@ const Overview = () => {
                 <div className='bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-xl shadow flex items-center gap-6 hover:scale-105 transition'>
                     <CreditCard size={32} className='text-white' />
                     <div>
-                        <h2 className='text-lg font-semibold'>Transactions</h2>
-                        <p className='text-gray-600 font-[roboto]'>58</p>
+                        {/* <NavLink to='/dashboard/transactions'> */}
+                            <h2 className='text-lg font-semibold'>Transactions</h2>
+                            <p className='text-gray-600 font-[roboto]'>58</p>
+                        {/* </NavLink> */}
                     </div>
                 </div>
 

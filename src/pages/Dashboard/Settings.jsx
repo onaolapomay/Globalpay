@@ -14,8 +14,10 @@ const Settings = () => {
 
     const [newName, setNewName] = useState('')
     const [newPassword, setNewPassword] = useState('')
+    const [showNewPassword, setShowNewPassword] = useState(false);
     const [loading, setLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [currentPassword, setCurrentPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [passwordStrength, setPasswordStrength] = useState(0)
@@ -169,7 +171,7 @@ const Settings = () => {
             <div className='mt-4'>
                 <label className='block text-gray-700 font-medium mb-2'>Change Password</label>
                 <div className='relative'>
-                    <input type={showPassword ? "text" : "password"}
+                    <input type={showNewPassword ? "text" : "password"}
                     value={newPassword}
                     onChange={(e) =>{
                         const value = e.target.value
@@ -179,9 +181,9 @@ const Settings = () => {
                     placeholder='Enter new password'
                     className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                     <button type='button'
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowNewPassword(!showNewPassword)}
                     className='absolute right-3 top-2.5 text-gray-800'>
-                        {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
+                        {showNewPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
                     </button>
                 </div>
 
@@ -208,15 +210,15 @@ const Settings = () => {
                         Confirm Password
                     </label>
                     <div className='relative'>
-                        <input type={showPassword ? "text" : "password"}
+                        <input type={showConfirmPassword ? "text" : "password"}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder='Confirm new password'
                         className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                         <button type='button'
-                            onClick={() => setShowPassword(!showPassword)}
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                             className='absolute right-3 top-2.5 text-gray-800'>
-                        {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
+                        {showConfirmPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
                     </button>
                     </div>
                 </div>

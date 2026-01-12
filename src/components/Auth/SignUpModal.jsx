@@ -9,7 +9,8 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [passwordStrength, setPasswordStrength] = useState('')
+  const [passwordStrength, setPasswordStrength] = useState(0)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { register } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
 
@@ -31,7 +32,7 @@ const SignUpModal = ({ isSignUpOpen, setIsSignUpOpen, setIsLoginOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (CheckPasswordStrength(password) < 6) {
+    if (CheckPasswordStrength(password) < 4) {
         alert('Password is too weak! Please choose a stronger password.')
         return
     }
@@ -141,7 +142,7 @@ const name = `${firstname} ${lastname}`.trim()
                 />
                 <button type='button'
                     onClick={() => setShowPassword(!showPassword)}
-                    className='absolute right-3 top-8.5 text-white'>
+                    className='absolute right-3 top-9 text-white'>
                     {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
                 </button>
               </div>
@@ -169,7 +170,7 @@ const name = `${firstname} ${lastname}`.trim()
                   Re-enter Password
                 </label>
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showConfirmPassword ? 'text' : 'password'}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder='Your password'
@@ -177,15 +178,16 @@ const name = `${firstname} ${lastname}`.trim()
                   required
                 />
                 <button type='button'
-                    onClick={() => setShowPassword(!showPassword)}
-                    className='absolute right-3 top-8.5 text-white'>
-                    {showPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className='absolute right-3 top-9 text-white'>
+                    {showConfirmPassword ? <EyeOff size={20}/> : <Eye size={20}/> }
                 </button>
               </div>
 
               <button
                 type='submit'
-                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl cursor-pointer hover:bg-yellow-500 focus:text-yellow-500 active:text-yellow-600'
+                disabled={passwordStrength < 4}
+                className='w-full bg-yellow-400 text-black font-medium px-6 py-3 rounded-xl cursor-pointer hover:bg-yellow-500 focus:text-yellow-500 active:text-yellow-600 disabled:opacity-50 disabled:cursor-not-allowed transition'
               >
                 Sign Up
               </button>
