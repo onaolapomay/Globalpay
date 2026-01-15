@@ -1,8 +1,14 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const Cards = () => {
   return (
-    <section className="py-12">
+    <motion.section 
+    initial={{opacity:0, y:30}}
+    whileInView={{opacity:1, y:0}}
+    viewport={{once:true}}
+    transition={{duration:0.5, delay: 0.15}}
+    className="py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           
@@ -44,7 +50,7 @@ const Cards = () => {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 
