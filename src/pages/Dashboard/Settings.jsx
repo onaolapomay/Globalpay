@@ -145,7 +145,7 @@ const Settings = () => {
                 className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
                 <button onClick={handleChangeName}
                 disabled={loading}
-                className='mt-3 mx-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition'>
+                className='mt-3 mx-2 bg-indigo-600 text-white font-mono px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition'>
                     {loading ? 'Updating...' : 'Update Name'}
                 </button>
             </div>
@@ -226,7 +226,7 @@ const Settings = () => {
                 <button onClick={handleChangePassword}
                 type='button'
                 disabled={loading || passwordStrength < 3}
-                className='mt-3 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 disabled:opacity-50 transistion'>
+                className='mt-3 bg-teal-600 text-white px-4 py-2 rounded-lg font-mono hover:bg-teal-700 disabled:opacity-50 transistion'>
                     {loading ? 'Updating...' : 'Update Password'}
                 </button>
                 {passwordStrength < 3 && newPassword && (
